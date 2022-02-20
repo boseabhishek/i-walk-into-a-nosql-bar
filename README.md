@@ -1,9 +1,12 @@
 # i-walk-into-a-nosql-bar
 
 
-## Dynamodb
+## I visit the AWS DynamoDB corner
 
-Loosely based on https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html#GSI.scenario
+I want to write some cool stuff using DynamoDB. Hence, I want a nice but easy scenario.
+
+Hence, I pick up [this]( https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html#GSI.scenario) scenario to start with..
+
 
 ### Acceptance criteria
 
