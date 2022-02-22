@@ -108,7 +108,7 @@ func TestTableNoSecondaryIndexExisting(t *testing.T) {
 			t.Fatalf("setup error: %v", err)
 		}
 
-		assert.Equal(t, out.Losses, 1)
+		assert.Equal(t, out.TopScore, 6616)
 
 	})
 
