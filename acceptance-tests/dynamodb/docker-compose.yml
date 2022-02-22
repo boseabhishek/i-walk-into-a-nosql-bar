@@ -10,6 +10,9 @@ services:
     volumes:
       - "./docker/dynamodb:/home/dynamodblocal/data"
     working_dir: /home/dynamodblocal
+    networks:
+      - dynamo-e2e
 
-network:
-      
+networks:
+  dynamo-e2e:
+    name: dynamo-e2e
