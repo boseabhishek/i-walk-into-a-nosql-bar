@@ -2,13 +2,19 @@
 
 ## My plan
 
-I have picked up [this](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html#GSI.scenario) scenario to start with. I want to work on this scenario and see how I can achive this using different dbs e.g. Dynamodb, Couchbase, MongoDB.
+> This might be a blog post someday 🎨
+
+I have picked up [this](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html#GSI.scenario) scenario to start with. I want to work on this scenario and see how I can achive this using different dbs e.g. Dynamodb, Couchbase, MongoDB. The main objective is to use `Go` to write e2e scnearios(some might call it integration as we are using local docker images as infra) but my opinion is e2e as I am testing business cenarios.
+
+The main purpose is to benchmark using [Go's benchmarking](https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go) to study the performance of each db techs, in terms of:
+
+- use of secondary index
 
 Below are a list of features I want to work on:
 
 ## Features
 
-> Feature: User tracks gamers and their scores for a mobile gaming application
+### Feature: User tracks gamers and their scores for a mobile gaming application
 
 > Scenario: User requests scores by gamer's id and game title
 
