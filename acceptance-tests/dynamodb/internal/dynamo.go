@@ -2,6 +2,7 @@ package dynamo
 
 import (
 	"context"
+	"log"
 	"strings"
 	"testing"
 
@@ -119,7 +120,21 @@ func (d *Dynamo) GetItemFromTable(ctx context.Context, input *dynamodb.GetItemIn
 
 	res, err := d.GetItem(input)
 	if err != nil {
-		t.Fatalf("setup error: %v", err)
+		t.Fatalf("error getitem from table: %v", err)
+	}
+
+	return
+
+}
+
+// ScanItemFromTable ...
+func (d *Dynamo) ScanItemFromTable(ctx context.Context, params *dynamodb.ScanInput, t *testing.T) (res *dynamodb.ScanOutput) {
+
+	t.Helper()
+
+	res, err := d.Scan(params)
+	if err != nil {
+		log.Fatalf("error scan from table: %v", err)
 	}
 
 	return

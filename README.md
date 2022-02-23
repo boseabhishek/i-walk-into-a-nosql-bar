@@ -17,7 +17,16 @@ Below are a list of features I want to work on:
 
         - When I query by gamer's id and game title
 
-        - Then I could fetch the top score
+        - Then I could fetch the top score for that gamer
+
+> Scenario: User requests topscore of each game
+
+        - Given there are multiple gamers with game title they have played
+            - And the respective scores
+
+        - When I query by game title
+
+        - Then I could fetch the top score for that game title
 
 ## :beer: first stop: AWS DynamoDB lounge
 
