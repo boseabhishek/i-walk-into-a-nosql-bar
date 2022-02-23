@@ -10,7 +10,7 @@ Below are a list of features I want to work on:
 
 > Feature: User tracks gamers and their scores for a mobile gaming application
 
-> Scenario: User requests scores by gamer's id
+> Scenario: User requests scores by gamer's id and game title
 
         - Given there are multiple gamers with game title they have played
             - And the respective scores
