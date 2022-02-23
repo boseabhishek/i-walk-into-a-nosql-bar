@@ -3,6 +3,7 @@ package acceptance_test
 import (
 	"context"
 	"log"
+	"sort"
 	"testing"
 
 	dynamo "github.com/boseabhishek/i-walk-into-a-nosql-bar/acceptance-tests/dynamodb/internal"
@@ -144,14 +145,17 @@ func TestTableNoSecondaryIndexExisting(t *testing.T) {
 		assert.Equal(t, len(outs), 3)
 
 	})
-	t.Run("get gamer ids by highest score for a game", func(t *testing.T) {
+	t.Run("find gamer ids by highest score for a game", func(t *testing.T) {
 
 		// Create the Expression to fill the input struct with.
 		// Get all GameScores for that game title
-		filt := expression.Name("GameTitle").Equal(expression.Value("Call of duty"))
+
+		forGame := "Call of duty"
+
+		filt := expression.Name("GameTitle").Equal(expression.Value(forGame))
 
 		// Get back the TopScore
-		proj := expression.NamesList(expression.Name("UserId"))
+		proj := expression.NamesList(expression.Name("UserId"), expression.Name("TopScore"))
 
 		si := creatScanInput(d.TableName, filt, proj)
 
@@ -167,11 +171,17 @@ func TestTableNoSecondaryIndexExisting(t *testing.T) {
 			if err != nil {
 				t.Fatalf("error unmarshalling scan: %v", err)
 			}
-
 			outs = append(outs, out)
 		}
 
 		assert.Equal(t, len(outs), 3)
+
+		// Sort outs by descending topscore.
+		sort.SliceStable(outs, func(i, j int) bool {
+			return outs[i].TopScore > outs[j].TopScore
+		})
+
+		assert.Equal(t, outs[0].UserID, "001")
 
 	})
 }

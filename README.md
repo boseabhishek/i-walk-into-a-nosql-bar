@@ -28,6 +28,15 @@ Below are a list of features I want to work on:
 
         - Then I could fetch the top score for that game title
 
+> Scenario: User requests gemer's id
+
+        - Given there are multiple gamers with game title they have played
+            - And the respective scores
+
+        - When I query by game title
+
+        - Then I could fetch the top score for that game title        
+
 ## :beer: first stop: AWS DynamoDB lounge
 
 As per AWS DynamoDB docs,
