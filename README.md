@@ -65,3 +65,8 @@ I want to implement the above scenarios using DynamoDB.
 - indexes
   - primary
   - secondary - LSI and GSI
+
+
+## Resources:
+
+- [SQL vs NoSQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.html)
