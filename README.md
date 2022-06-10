@@ -45,28 +45,26 @@ Below are a list of features I want to work on:
 
 ## :beer: first stop: AWS DynamoDB lounge
 
-As per AWS DynamoDB docs,
-
-> NoSQL database systems like Amazon DynamoDB use alternative models for data management, such as key-value pairs or document storage. When you switch from a relational database management system to a NoSQL database system like DynamoDB, it's important to understand the key differences and specific design approaches.
+> For a DynamoDb 101, see [here](docs/dynamodb.md)
 
 I want to implement the above scenarios using DynamoDB.
 
-### some dynamodb basics:
+What do I find which can help me writing future code when it comes to working with dynamodb?
 
-- **partition key**
+_**data retrieval**_
 
-  The primary key that uniquely identifies each item in an Amazon DynamoDB table can be simple (a partition key only) or composite (a partition key combined with a sort key).
-  Also known as its hash attribute. The term "hash attribute" derives from the DynamoDB usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.
+- Single-item requests (PutItem, GetItem, UpdateItem, and DeleteItem) that act on a single, specific item and require the full primary key;
+- Query, which can read a range of items and must include the partition key;
+- Scan, which can read a range of items but searches across your entire table.
 
-- **sort key** :point_up:
+Other than the wildly-inefficient (for most use cases!) Scan operation, you must include the partition key in any request to DynamoDB.
 
-  The sort key of an item is also known as its range attribute. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
 
-- indexes
-  - primary
-  - secondary - LSI and GSI
+## TODOs:
 
+- CI
 
 ## Resources:
 
-- [SQL vs NoSQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.html)
+- [SQL to NoSQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.html)
+

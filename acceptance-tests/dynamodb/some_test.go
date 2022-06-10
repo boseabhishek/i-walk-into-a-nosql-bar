@@ -36,28 +36,12 @@ func TestTableNoSecondaryIndexExisting(t *testing.T) {
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{
 			{
 				AttributeName: aws.String("UserId"), // Name
-				AttributeType: aws.String("S"),      // Type: S|N|B (String|Number|Binary)
+				AttributeType: aws.String("S"),      // Type: S|N|B (String|Number|Binary) Also, Map?
 			},
 			{
 				AttributeName: aws.String("GameTitle"),
 				AttributeType: aws.String("S"),
 			},
-			// {
-			// 	AttributeName: aws.String("TopScore"),
-			// 	AttributeType: aws.String("N"),
-			// },
-			// {
-			// 	AttributeName: aws.String("TopScoreDateTime"),
-			// 	AttributeType: aws.String("S"),
-			// },
-			// {
-			// 	AttributeName: aws.String("Wins"),
-			// 	AttributeType: aws.String("N"),
-			// },
-			// {
-			// 	AttributeName: aws.String("Losses"),
-			// 	AttributeType: aws.String("N"),
-			// },
 		},
 		// Specifies the attributes that make up the primary key for a table or an index.
 		KeySchema: []*dynamodb.KeySchemaElement{
@@ -65,10 +49,12 @@ func TestTableNoSecondaryIndexExisting(t *testing.T) {
 				AttributeName: aws.String("UserId"),
 				KeyType:       aws.String("HASH"), // HASH - partition key
 			},
+			// partition key is very important for horizontal scaling
 			{
 				AttributeName: aws.String("GameTitle"),
 				KeyType:       aws.String("RANGE"), // RANGE - sort key
 			},
+			// This makes a composite primary key of partition key + sort key
 		},
 		// BillingMode as PAY_PER_REQUEST
 		BillingMode: aws.String(dynamodb.BillingModePayPerRequest),
